@@ -1,0 +1,22 @@
+extends layout.pug
+block styles
+	link(href="../public/stylesheets/starter-template.css" rel="stylesheet")
+block content
+	nav(class="navbar navbar-expand-md navbar-dark bg-dark fixed-top")
+		a(class="navbar-brand" href="#") UB Energy Usage Data
+		button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation")
+			span(class="navbar-toggler-icon")
+		div(class="collapse navbar-collapse" id="navbarsExampleDefault")
+			ul(class="navbar-nav mr-auto")
+				// add dropdown li in here if needed
+			form(class="form-inline my-2 my-lg-0")
+				input(class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search")
+				button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Search
+	
+	main(role="main" class="container")
+		<br>
+		div(class="starter-template")
+			h1 Bootstrap Starter Template
+			p(class="lead") Use this document as a way to quickly start any new project. <br> All you get is this text and a mostly barebones HTML document.
+			
+	
