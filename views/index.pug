@@ -1,6 +1,6 @@
 extends layout.pug
 block styles
-	link(href="../public/stylesheets/starter-template.css" rel="stylesheet")
+	link(href="stylesheets/starter-template.css" rel="stylesheet")
 block content
 	nav(class="navbar navbar-expand-md navbar-dark bg-dark fixed-top")
 		a(class="navbar-brand" href="#") UB Energy Usage Data
@@ -8,54 +8,22 @@ block content
 			span(class="navbar-toggler-icon")
 		div(class="collapse navbar-collapse" id="navbarsExampleDefault")
 			ul(class="navbar-nav mr-auto")
-				// add dropdown li in here if needed
+			//	add dropdown li in here if needed
+				li(class="nav-item active")
+					a(class="nav-link" href="#") Home
+						span(class="sr-only")(current)
 			form(class="form-inline my-2 my-lg-0")
 				input(class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search")
 				button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Search
 	
 	main(role="main" class="container")
-		<br>
 		div(class="starter-template")
 			h1 Bootstrap Starter Template
 			p(class="lead") Use this document as a way to quickly start any new project. <br> All you get is this text and a mostly barebones HTML document.
-		<canvas id="bldgMoneyChart" width="400" height="400"></canvas>
-		<script>
-			var ctx = document.getElementById("bldgMoneyChart")
-			var bldgMoneyChart = new Chart(ctx, {
-				type: 'bar',
-				data: {
-					labels: ["Alumni", "Baird", "Baldy", "Bell", "Bonner"],
-					datasets: [{
-						label: 'Annual Energy Cost',
-						data: [10, 11, 12, 13, 14]
-						//data: [710250, 175047, 332302, 221077, 135152],
-						backgroundColor: [
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(75, 192, 192, 0.2)',
-							'rgba(153, 102, 255, 0.2)',
-							'rgba(255, 159, 64, 0.2)'
-						],
-            borderColor: [
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(75, 192, 192, 1)',
-							'rgba(153, 102, 255, 1)',
-							'rgba(255, 159, 64, 1)'
-						],
-						borderWidth: 1
-					}]
-				},
-				options: {
-					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero:true
-							}
-						}]
-					}
-				}
-			});
-		</script>
+			canvas(id="bldgMoneyChart" width="400" height="400")
+		
+		
+		
+		block scripts
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+			script(src="javascripts/charts.js")
