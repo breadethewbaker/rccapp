@@ -13,7 +13,7 @@ struct bldg {
 
 int main(int argc, char* argv[]) {
 	ifstream file ("data.csv");
-	ostream oFile ("out.json");
+	ofstream oFile ("out.json");
 	string line;
 
 	bool kwh = false;
@@ -22,20 +22,20 @@ int main(int argc, char* argv[]) {
 
 	if ( file.is_open() )
 	{
-		file << "{\n\t\"buildings\": {\n\t\t";
+		oFile << "{\n\t\"buildings\": {\n";
 		while ( getline (file,line) )
 		{
-			if ( line.find("SQFEET") != npos )
+			if ( line.find("SQFEET") != string::npos )
 			{
 				int cc = 0;
-				string bldg = "";
+				string bldg = "\t\t";
 				for (string::iterator i=line.begin(); i!=line.end(); ++i)
 				{
-					if ( cc == 2 ) bldg.append((string)(*i));
+					if ( cc == 2 ) bldg += *i;
 					if ( *i == ',' ) ++cc;
 				}
-				bldg.append(": {\n\t\t\t");
-				file << bldg;
+				bldg.append(": {\n");
+				oFile << bldg;
 			}
 			if ( kwh && counter%2 == 0 && counter < 26 )
 			{
@@ -45,33 +45,52 @@ int main(int argc, char* argv[]) {
 			{
 
 			}
-			if ( line.find("KWH") != npos )
+			if ( line.find("KWH") != string::npos )
 			{
-				file << "\"KWH\": [\n\t\t\t\t";
+				oFile << "\t\t\t\"KWH\": [\n";
 				kwh = true;
-				++counter;
+				counter = 0;
 			}
-			if ( line.find("CCF") != npos )
+			if ( line.find("CCF") != string::npos )
 			{
-				file << "\"CCF\": [\n\t\t\t\t";
+				oFile << "\t\t\t\"CCF\": [\n";
 				natGas = true;
-				++counter;
+				counter = 0;
+			}
+			if ( line.find("Total Cost") != string::npos )
+			{
+				int cc = 0;
+				string totals = "\t\t\t\"Total\": ";
+				for (string::iterator i=line.begin(); i!=line.end(); ++i)
+				{
+					if ( cc == 4 ) totals += *i;
+					if ( *i == ',' ) ++cc;
+				}
+				totals.append("\n\t\t}\n\t}\n}");
 			}
 			if ( counter == 26 )
 			{
-				
-				counter = 0;
 				int cc = 0;
+				string totArr;
+				if ( kwh ) totArr = "\t\t\t\"KWHtot\": [";
+				else totArr = "\t\t\t\"CCFtot\": [";
 				for (string::iterator i=line.begin(); i!=line.end(); ++i)
 				{
 					if ( cc == 2 || cc == 4 || cc == 5)
 					{
-						if ( *i == ',' ) file <<
-						bldg.append((string)(*i));
+						if ( *i != '\"') totArr += *i;
 					}
 					if ( *i == ',' ) ++cc;
 				}
+				totArr.pop_back();
+				totArr.append("],\n");
+				oFile << totArr;
+				kwh = false;
+				natGas = false;
 			}
+			++counter;
 		}
 	}
+	file.close();
+	oFile.close();
 }
