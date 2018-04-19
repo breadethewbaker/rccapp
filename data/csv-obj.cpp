@@ -15,36 +15,35 @@ int main(int argc, char* argv[]) {
 	ifstream file ("data.csv");
 	ostream oFile ("out.json");
 	string line;
-	
+
 	bool kwh = false;
 	bool natGas = false;
 	int counter = 0;
-	
+
 	if ( file.is_open() )
 	{
-		file << "{\n\t\"buildings\": [\n\t\t";
+		file << "{\n\t\"buildings\": {\n\t\t";
 		while ( getline (file,line) )
 		{
 			if ( line.find("SQFEET") != npos )
 			{
 				int cc = 0;
-				string bldg = "{\n\t\t\t\"name\": "
+				string bldg = "";
 				for (string::iterator i=line.begin(); i!=line.end(); ++i)
 				{
 					if ( cc == 2 ) bldg.append((string)(*i));
 					if ( *i == ',' ) ++cc;
 				}
-				bldg.append(",\n\t\t\t");
+				bldg.append(": {\n\t\t\t");
 				file << bldg;
-				
 			}
-			if ( kwh && counter>0 && counter%2 == 0 )
+			if ( kwh && counter%2 == 0 && counter < 26 )
 			{
-				
+
 			}
-			if ( natGas && counter>0 && counter%2 == 0 )
+			if ( natGas && counter%2 == 0 && counter < 26 )
 			{
-				
+
 			}
 			if ( line.find("KWH") != npos )
 			{
@@ -57,6 +56,21 @@ int main(int argc, char* argv[]) {
 				file << "\"CCF\": [\n\t\t\t\t";
 				natGas = true;
 				++counter;
+			}
+			if ( counter == 26 )
+			{
+				
+				counter = 0;
+				int cc = 0;
+				for (string::iterator i=line.begin(); i!=line.end(); ++i)
+				{
+					if ( cc == 2 || cc == 4 || cc == 5)
+					{
+						if ( *i == ',' ) file <<
+						bldg.append((string)(*i));
+					}
+					if ( *i == ',' ) ++cc;
+				}
 			}
 		}
 	}
