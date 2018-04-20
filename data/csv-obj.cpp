@@ -31,15 +31,29 @@ int main(int argc, char* argv[]) {
 				string bldg = "\t\t";
 				for (string::iterator i=line.begin(); i!=line.end(); ++i)
 				{
-					if ( cc == 2 ) bldg += *i;
+					if ( cc == 1 ) bldg += *i;
 					if ( *i == ',' ) ++cc;
 				}
+				bldg.pop_back();
 				bldg.append(": {\n");
 				oFile << bldg;
 			}
 			if ( kwh && counter%2 == 0 && counter < 26 )
 			{
-
+				string month = "[";
+				int cc = 0;
+				for (string::iterator i=line.begin(); i!=line.end(); ++i)
+				{
+					if ( cc > 2 && cc < 6 )
+					{
+						if ( *i != '\"' ) month += *i;
+					}
+					if ( *i == ',' ) ++cc;
+				}
+				month.pop_back();
+				month.append("],\t");
+				if ( counter == 25 ) { month.pop_back(); month.pop_back(); month.append("]\n\t\t\t"); }
+				oFile << month;
 			}
 			if ( natGas && counter%2 == 0 && counter < 26 )
 			{
@@ -47,13 +61,13 @@ int main(int argc, char* argv[]) {
 			}
 			if ( line.find("KWH") != string::npos )
 			{
-				oFile << "\t\t\t\"KWH\": [\n";
+				oFile << "\t\t\t\"KWH\": [\n\t\t\t\t";
 				kwh = true;
 				counter = 0;
 			}
 			if ( line.find("CCF") != string::npos )
 			{
-				oFile << "\t\t\t\"CCF\": [\n";
+				oFile << "\t\t\t\"CCF\": [\n\t\t\t\t";
 				natGas = true;
 				counter = 0;
 			}
