@@ -1,18 +1,8 @@
 #include <fstream>
-#include <vector>
 using namespace std;
 
-struct bldg {
-	string name;
-	vector<vector<int>> eMonths;
-	vector<int> eTotals;
-	vector<vector<int>> gMonths;
-	vector<int> gTotals;
-	int total;
-};
-
 int main(int argc, char* argv[]) {
-	ifstream file ("data.csv");
+	ifstream file ("dat.csv");
 	ofstream oFile ("out.json");
 	string line;
 
@@ -38,26 +28,41 @@ int main(int argc, char* argv[]) {
 				bldg.append(": {\n");
 				oFile << bldg;
 			}
-			if ( kwh && counter%2 == 0 && counter < 26 )
+			if ( kwh && (counter+1)%2 == 0 && counter < 25 )
 			{
 				string month = "[";
 				int cc = 0;
 				for (string::iterator i=line.begin(); i!=line.end(); ++i)
 				{
-					if ( cc > 2 && cc < 6 )
+					if ( cc >= 2 && cc < 6 )
 					{
 						if ( *i != '\"' ) month += *i;
 					}
 					if ( *i == ',' ) ++cc;
 				}
+				while ( month.find(",,") != string::npos ) { month.insert(month.find(",,")+1,"-1");}
 				month.pop_back();
 				month.append("],\t");
-				if ( counter == 25 ) { month.pop_back(); month.pop_back(); month.append("]\n\t\t\t"); }
+				if ( counter == 23 ) { month.pop_back(); month.pop_back(); month.append("\n\t\t\t],\n"); }
 				oFile << month;
 			}
-			if ( natGas && counter%2 == 0 && counter < 26 )
+			if ( natGas && (counter+1)%2 == 0 && counter < 25 )
 			{
-
+				string month = "[";
+				int cc = 0;
+				for (string::iterator i=line.begin(); i!=line.end(); ++i)
+				{
+					if ( cc >= 2 && cc < 6 && cc != 3 )
+					{
+						if ( *i != '\"' ) month += *i;
+					}
+					if ( *i == ',' ) ++cc;
+				}
+				while ( month.find(",,") != string::npos ) { month.insert(month.find(",,")+1,"-1");}
+				month.pop_back();
+				month.append("],\t");
+				if ( counter == 23 ) { month.pop_back(); month.pop_back(); month.append("\n\t\t\t],\n"); }
+				oFile << month;
 			}
 			if ( line.find("KWH") != string::npos )
 			{
@@ -77,12 +82,13 @@ int main(int argc, char* argv[]) {
 				string totals = "\t\t\t\"Total\": ";
 				for (string::iterator i=line.begin(); i!=line.end(); ++i)
 				{
-					if ( cc == 4 ) totals += *i;
+					if ( cc == 4 && *i != ',') totals += *i;
 					if ( *i == ',' ) ++cc;
 				}
-				totals.append("\n\t\t}\n\t}\n}");
+				totals.append("\n\t\t},\n");
+				oFile << totals;
 			}
-			if ( counter == 26 )
+			if ( counter == 25 )
 			{
 				int cc = 0;
 				string totArr;
