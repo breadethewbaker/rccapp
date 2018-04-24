@@ -3,15 +3,21 @@ block styles
 	link(href="stylesheets/starter-template.css" rel="stylesheet")
 block content
 	nav(class="navbar navbar-expand-md navbar-dark bg-dark fixed-top")
-		a(class="navbar-brand" href="#") Reversing Climate Change
+		a(class="navbar-brand" href="#") Energy Transparency Dashboard
 		button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation")
 			span(class="navbar-toggler-icon")
 		div(class="collapse navbar-collapse" id="navbarsExampleDefault")
 			ul(class="navbar-nav mr-auto")
-			//	add dropdown li in here if needed
+				//- add dropdown li in here if needed
+				//- li(class="nav-item active")
+				//- 	a(class="nav-link" href="") Home
+				//- 		span(class="sr-only")(current)
 				li(class="nav-item active")
-					a(class="nav-link" href="#") Home
-						span(class="sr-only")(current)
+					a(class="nav-link" href="./about") About
+						span(class="sr-only")
+				li(class="nav-item active")
+					a(class="nav-link" href="./team") Our Team
+						span(class="sr-only")
 			form(class="form-inline my-2 my-lg-0")
 				input(class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search")
 				button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Search
@@ -19,18 +25,18 @@ block content
 	main(role="main" class="container")
 		div(class="starter-template")
 			h1 UB Energy Usage Data
-			p(class="lead") This website is meant to visually compile data on UB's energy usage in an easily understandable way. It is currently a work in progress.
+			p(class="lead") It is currently a work in progress.
 	div(class="container border-box")
 		div(class="row")
-			div(class="col-lg-3")
-			div(class="col-lg-6")
+			div(class="col-lg-2")
+			div(class="col-lg-8")
 				canvas(id="bldgMoneyChart")
 					
 					
 		div(class="container border-box")
 			div(class="row")
-				div(class="col-lg-3")
-				div(class="col-lg-6")
+				div(class="col-lg-2")
+				div(class="col-lg-8")
 					canvas(id="bldgMoneyChart2")
 					
 		block scripts
