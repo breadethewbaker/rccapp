@@ -1,0 +1,33 @@
+extends layout.pug
+block styles
+	link(href="stylesheets/starter-template.css" rel="stylesheet")
+block content
+	nav(class="navbar navbar-expand-md navbar-dark bg-dark fixed-top")
+		a(class="navbar-brand" href="./") Energy Transparency Dashboard
+		button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation")
+			span(class="navbar-toggler-icon")
+		div(class="collapse navbar-collapse" id="navbarsExampleDefault")
+			ul(class="navbar-nav mr-auto")
+				//- add dropdown li in here if needed
+				//- li(class="nav-item active")
+				//- 	b(class="nav-link" href="./") Home
+				//- 		span(class="sr-only")
+				li(class="nav-item active")
+					a(class="nav-link" href="./about") About
+						span(class="sr-only")
+				li(class="nav-item active")
+					a(class="nav-link" href="./team") Our Team
+						span(class="sr-only")
+			form(class="form-inline my-2 my-lg-0")
+				input(class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search")
+				button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Search
+	
+	main(role="main" class="container")
+		div(class="starter-template")
+			h1 About<br/><br/>
+			p(class="lead") The website that you are seeing is our project for this academic year. Our goal of reversing climate change led us to create an Energy Transparency Dashboard. This dashboard is meant to visually compile data across the campus here at The University at Buffalo broken down regarding the source of energy whether its is solar, wind, hydro or fossil fuels. The website shows these statistics in an easy and comprehensive way in order for all users to understand what is happening across campus. Our goal with this website is for it to act as a catalyst, what we mean by that is that it will show that there is a problem here on campus and push students and teachers to strive toward fixing the problem. <br/>
+
+					
+		block scripts
+			script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js")
+			script(src="javascripts/charts.js")

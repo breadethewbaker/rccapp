@@ -12,6 +12,17 @@ var users = require('./routes/users');
 
 var app = express();
 
+// const http = require('http')
+// const server = http.createServer(app)
+
+// server.listen(3000, err => {
+//   if (err) {
+//     throw err
+//   }
+//
+//   console.log('server started on port 3000')
+// })
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
