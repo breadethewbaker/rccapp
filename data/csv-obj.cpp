@@ -42,8 +42,8 @@ int main(int argc, char* argv[]) {
 				}
 				while ( month.find(",,") != string::npos ) { month.insert(month.find(",,")+1,"-1");}
 				month.pop_back();
-				month.append("],\t");
-				if ( counter == 23 ) { month.pop_back(); month.pop_back(); month.append("\n\t\t\t],\n"); }
+				month.append("],");
+				if ( counter == 23 ) { month.pop_back(); month.append("\n\t\t\t],\n"); }
 				oFile << month;
 			}
 			if ( natGas && (counter+1)%2 == 0 && counter < 25 )
@@ -60,8 +60,8 @@ int main(int argc, char* argv[]) {
 				}
 				while ( month.find(",,") != string::npos ) { month.insert(month.find(",,")+1,"-1");}
 				month.pop_back();
-				month.append("],\t");
-				if ( counter == 23 ) { month.pop_back(); month.pop_back(); month.append("\n\t\t\t],\n"); }
+				month.append("],");
+				if ( counter == 23 ) { month.pop_back(); month.append("\n\t\t\t],\n"); }
 				oFile << month;
 			}
 			if ( line.find("KWH") != string::npos )
