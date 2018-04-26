@@ -5,12 +5,11 @@ let bldgMoneyChart1 = new Chart(ctx, {
 type: 'bar',
 data: {
   labels: ["Alumni", "Baird", "Cold Water Plant", "Baldy", "John Beane Center", "Bell", "Bissell", "Bonner", "Center for the Arts", "Center for Tomorrow", "North Child Care", "Clemens Hall", "CNG Pumps", "Computing Center", "Cooke & Hochstetter Complex", "Creekside Village", "Crofts Hall", "Davis Hall", "Dorsheimer Greenhouse", "Fargo" , "Millard Fillmore Academic Core", "Flint Village",
-            "Fronczak Hall", "Furnas Hall", "Governors","Greiner","Hadley Village","Helm","Human Resource Department","Jacobs & Alfeiro Ctr","Jarvis","Ketter","Knox","Lockwood","Mail Center","Math Building","North Chemical Storage","NSC","Obrian","Park Hall","Porter", "Richmond", "Red Jacket", "Slee", "South Lake","Spine:Capen,Norton,Talbert","Spaulding","UB Stadium","Statler","UB North St lights & Lighting Loop", "Student Union", "Wilkeson"   ],
+            "Fronczak Hall", "Furnas Hall", "Governors","Greiner","Hadley Village","Helm","Human Resource Department","Jacobs & Alfeiro Ctr","Jarvis","Ketter","Knox","Lockwood","Mail Center","Math Building","North Chemical Storage","NSC","Obrian","Park Hall","Porter", "Richmond", "Red Jacket", "Slee", "South Lake","Spine: Capen,Norton,Talbert","Spaulding","UB Stadium","Statler","UB North St lights & Lighting Loop", "Student Union", "Wilkeson"   ],
   datasets: [{
     label: 'Annual Energy Cost',
     data: [710249.8153, 175046.66, 698843.38, 332301.95, 104673.20, 221076.73, 16246.27, 135151.52, 448134.77, 38612.73, 18010.19, 171590.57, 12306.30, 51814.44, 1064762.05, 83581.09, 159865.07, 390459.76, 70889.72, 265760.50, 448377.60, 151957.93,
             342637.76 , 461495.00 , 518653.16, 186846.54 , 187909.08, 71979.48, 5217.98 , 101361.42 , 173393.15,  162615.95, 70896.99,  346624.07, 10408.86 , 29712.39  , 21825.45, 1094048.42  , 179933.67 , 263296.79, 277436.93, 351203.44, 416188.21,  65370.73, 185602.87, 918716.11  , 289391.87  , 137836.49  , 238059.06 ,100710.41 ,   216156.36,  258931.13    ],
-    //data: [710250, 175047, 332302, 221077, 135152],
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)',
       'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)',
@@ -199,12 +198,12 @@ options: {
 
 let ctxxxxx = document.getElementById("bldgMoneyChart5").getContext('2d');
 let bldgMoneyChart5 = new Chart(ctxxxxx, {
-type: 'bar',
+type: 'polarArea',
 data: {
-  labels: ["Alumni", "Baird", "Cold Water Plant", "Baldy", "John Beane Center", "Bell", "Bissell", "Bonner"],
+  labels: ["NSC","Cooke & Hochstetter Complex","Alumni", "Spine: Capen,Norton,Talbert", "Cold Water Plant"  ],
   datasets: [{
     label: 'Annual Energy Cost',
-    data: [710249.82, 175046.66, 698843.38, 332301.95, 104673.20, 221076.73, 16246.27, 135151.52],
+    data: [1094048.42, 1064762.05, 710249.81, 918716.11, 698843.38   ],
     //data: [710250, 175047, 332302, 221077, 135152],
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
