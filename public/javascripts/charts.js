@@ -1,19 +1,7 @@
-<<<<<<< HEAD
 // var Chart = require('chart.js');
 
 let ctx = document.getElementById("bldgMoneyChart1").getContext('2d');
 let bldgMoneyChart1 = new Chart(ctx, {
-=======
-//var Chart = require('chart.js');
-
-//const fs = require('fs');
-//let fString = fs.readFileSync('/home/brett/websites/rccapp/data/out.json');
-//let obj = JSON.parse(fString);
-//let lumTot = parseFloat(obj["buildings"]["ALUMNI ARENA"]["Total"]);
-
-let ctx = document.getElementById("bldgMoneyChart").getContext('2d');
-let bldgMoneyChart = new Chart(ctx, {
->>>>>>> 5bb65f62276cc10c5e970bba6dcace0692580a65
 type: 'bar',
 data: {
   labels: ["Alumni", "Baird", "Cold Water Plant", "Baldy", "John Beane Center", "Bell", "Bissell", "Bonner", "Center for the Arts", "Center for Tomorrow", "North Child Care", "Clemens Hall", "CNG Pumps", "Computing Center"],
