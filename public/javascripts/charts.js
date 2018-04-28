@@ -74,11 +74,11 @@ let bldgMoneyChart2 = new Chart(ctxx, {
 type: 'bar',
 data: {
   labels: [ "Creekside",  "Fargo" ,"Flint",
-             "Governors","Greiner","Hadley","Porter", "Richmond", "Red Jacket",  "South Lake","Spaulding", "Wilkeson"   ],
+             "Governors","Greiner","Hadley","Porter", "Richmond", "Red Jacket",  "South Lake","Spaulding", "Wilkeson", "Clement", "GoodYear"  ],
   datasets: [{
     label: 'Annual Energy Cost (USD)',
     data: [ 83581.09, 265760.50, 151957.93,
-           518653.16, 186846.54 , 187909.08, 277436.93, 351203.44, 416188.21, 185602.87, 289391.87  , 258931.13    ],
+           518653.16, 186846.54 , 187909.08, 277436.93, 351203.44, 416188.21, 185602.87, 289391.87  , 258931.13,72875.86,132052.55   ],
     //data: [710250, 175047, 332302, 221077, 135152],
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)',
@@ -93,7 +93,7 @@ data: {
     borderWidth: 1
   },{
     label: 'Natural Gas (USD)',
-    data:[ 42890.53,15894.42,41115.53,38948.84,61656.74,35620.51,17783.63,28791.72,49588.10,49662.85,400.87,16065.94],
+    data:[ 42890.53,15894.42,41115.53,38948.84,61656.74,35620.51,17783.63,28791.72,49588.10,49662.85,400.87,16065.94,0,7293.34],
     // backgroundColor: [
     //   'rgba(161, 161, 161, 0.2)'
     // ],
